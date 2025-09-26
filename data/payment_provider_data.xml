@@ -1,0 +1,8 @@
+<odoo>
+    <record id="payment_provider_cod" model="payment.provider">
+        <field name="name">Cash on Delivery</field>
+        <field name="code">cod</field>
+        <field name="state">enabled</field>
+        <field name="image" type="base64" file="/home/anmolgarg/Odoo18/odoo/custom_addons/cod/static/description/icon.png"/>
+    </record>
+</odoo>

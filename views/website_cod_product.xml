@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_cod_info" inherit_id="website_sale.product">
+        <xpath expr="//h1[@itemprop='name']" position="after">
+            <t t-if="product.cod_available">
+                <div style="padding:10px; margin-top:10px;">
+                    <span style="color:green;"><b>Cash on delivery Available !</b></span><br/>
+                    <span t-esc="product.cod_message"/><br/>
+                    <span t-if="product.cod_expected_delivery">
+                        <span t-esc="product.cod_expected_delivery"/>
+                    </span><br/>
+                    <a t-if="product.cod_policy_link"
+                       t-att-href="product.cod_policy_link"
+                       target="_blank">COD Policy</a>
+                </div>
+            </t>
+            <t t-if="not product.cod_available">
+                <div style="border:2px solid red; padding:10px; margin-top:10px;">
+                    <span style="color:red;"><b>Cash on Delivery Not Available</b></span><br/>
+                    <span t-esc="product.cod_message"/>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

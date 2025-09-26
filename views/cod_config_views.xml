@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cod_config_list" model="ir.ui.view">
+        <field name="name">cod.config.list</field>
+        <field name="model">cod.config</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="min_order_amount"/>
+                <field name="max_order_amount"/>
+                <field name="expected_delivery_interval"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cod_config_form" model="ir.ui.view">
+        <field name="name">cod.config.form</field>
+        <field name="model">cod.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <!-- GENERAL CONFIGURATION -->
+                    <group string="GENERAL CONFIGURATION" colspan="2">
+                        <field name="name"/>
+                        <field name="min_order_amount"/>
+                        <field name="max_order_amount"/>
+                    </group>
+                    
+                    <!-- PRODUCT CONFIGURATION -->
+                    <group string="PRODUCT CONFIGURATION" colspan="2">
+                        <field name="cod_unavailable_products" widget="many2many_tags"/>
+                    </group>
+                    
+                    <!-- CASH ON DELIVERY APPLICABILITY -->
+                    <notebook>
+                        <page string="Allow States">
+                            <field name="cod_allowed_states" widget="many2many_tags"/>
+                        </page>
+                        <page string="Allow ZIP">
+                            <field name="cod_allowed_zip_codes" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                    
+                    <!-- WEBSITE PRODUCT PAGE CONFIGURATION -->
+                    <group string="WEBSITE PRODUCT PAGE CONFIGURATION" colspan="2">
+                        <group>
+                            <field name="cod_availability_alert"/>
+                            <field name="display_expected_delivery"/>
+                            <field name="expected_delivery_interval"/>
+                        </group>
+                        <group>
+                            <field name="cod_policy_link"/>
+                            <field name="cod_unavailable_message"/>
+                            <field name="cod_unavailable_message_payment"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
