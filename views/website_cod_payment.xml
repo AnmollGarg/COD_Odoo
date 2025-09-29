@@ -2,25 +2,18 @@
 <odoo>
     <template id="website_cod_payment_option" inherit_id="website_sale.payment">
         <xpath expr="//div[@id='payment_method']" position="inside">
-            <t t-set="providers" t-value="payment_providers or []"/>
-            <t t-foreach="providers" t-as="provider">
-                <t t-if="provider.code == 'cod'">
-                    <div class="payment-provider payment-provider-cod">
-                        <label>
-                            <input type="radio" name="provider_id"
-                                   t-att-value="provider.id"
-                                   t-att-checked="provider.id == selected_provider_id"/>
-                            <span>
-                                <img t-if="provider.image" t-att-src="'data:image/png;base64,%s' % provider.image" style="height:24px;"/>
-                                Cash on Delivery
-                            </span>
-                        </label>
-                        <div class="cod-details">
-                            <p t-esc="provider.cod_fees and 'COD Fees: %s' % provider.cod_fees or ''"/>
-                            <p>Amount must be paid on cash. Cannot cancel the delivery. One time delivery only.</p>
-                        </div>
+            <t t-if="cod_available">
+                <div class="payment-provider payment-provider-cod">
+                    <label>
+                        <input type="radio" name="provider_id" value="cod" required="required"/>
+                        <span>
+                            Cash on Delivery
+                        </span>
+                    </label>
+                    <div class="cod-details">
+                        <p>Amount must be paid in cash. Cannot cancel the delivery. One time delivery only.</p>
                     </div>
-                </t>
+                </div>
             </t>
         </xpath>
     </template>

@@ -1,6 +1,7 @@
 from odoo import http
+from odoo.addons.website_sale.controllers.main import WebsiteSale
 
-class CodWebsiteController(http.Controller):
+class CodWebsiteController(WebsiteSale):
     @http.route(['/product/cod_info/<int:product_id>'], type='json', auth='public')
     def cod_info(self, product_id):
         product = http.request.env['product.product'].sudo().browse(product_id)
