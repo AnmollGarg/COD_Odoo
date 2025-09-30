@@ -11,6 +11,9 @@ class PaymentProvider(models.Model):
 
     cod_fees = fields.Float(string="COD Fees", default=0.0)
 
+    def get_cod_fee(self, order):
+        return self.cod_fees or 0.0
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 

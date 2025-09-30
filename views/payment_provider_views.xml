@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <group name="provider_credentials" position='inside'>
                 <group invisible="code != 'cod'">
-                    <field name= "config_ids"/>
+                    <field name="config_ids"/>
                     <field name="cod_fees" />
                 </group>
             </group>
