@@ -4,9 +4,9 @@
     'summary': 'Cash on Delivery Payment Method',
     'description': 'Module to add Cash on Delivery as a payment method in Odoo',
     'category': 'Accounting',
-    'depends' : ['payment', 'sale', 'account', 'website', 'website_sale', 'payment'],
+    'depends' : ['payment', 'sale', 'account', 'website', 'website_sale', 'payment', 'product'],
     'data': [
-        'views/website_sale_cod_order_summary.xml',
+        'data/cod_fee_product.xml',
         'data/payment_method_data.xml',
         'data/payment_provider_data.xml',
         'views/website_cod_product.xml',

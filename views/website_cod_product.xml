@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <template id="product_cod_info" inherit_id="website_sale.product">
-        <xpath expr="//h1[@itemprop='name']" position="after">
+        <xpath expr="//div[@id='o_product_terms_and_share']" position="before">
             <t t-if="product.cod_available">
                 <div style="padding:10px; margin-top:10px;">
                     <span style="color:green;"><b>Cash on delivery Available !</b></span><br/>
@@ -20,6 +20,15 @@
                     <span t-esc="product.cod_message"/>
                 </div>
             </t>
+            <t t-set="cod_config" t-value="request.env['cod.config'].sudo().search([], limit=1)"/>
+            <div id="cod_allowed_zip_section" style="padding:10px; margin-top:10px;">
+                <b>Cash on Delivery Available on these ZIP codes:</b>
+                <ul>
+                    <t t-foreach="cod_config.cod_allowed_zip_codes" t-as="cod_zip">
+                        <li><t t-esc="cod_zip.name"/></li>
+                    </t>
+                </ul>
+            </div>
         </xpath>
     </template>
 </odoo>

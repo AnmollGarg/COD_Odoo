@@ -14,6 +14,11 @@ class PaymentProvider(models.Model):
     def get_cod_fee(self, order):
         return self.cod_fees or 0.0
 
+    def is_cod_available_for_zip(self, zip_code):
+        config = self.env['cod.config'].sudo().search([], limit=1)
+        allowed_zips = config.cod_allowed_zip_codes.mapped('name')
+        return zip_code in allowed_zips
+
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 

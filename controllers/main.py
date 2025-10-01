@@ -1,7 +1,16 @@
 from odoo import http
-from odoo.addons.website_sale.controllers.main import WebsiteSale
+from odoo.http import request, route
 
-class CodWebsiteController(WebsiteSale):
+class CodController(http.Controller):
+
+    @http.route('/cod/check_zip', type='json', auth='public')
+    def check_cod_zip(self, zip_code, product_id):
+        cod_config = request.env['cod.config'].sudo().search([], limit=1)
+        allowed_zip_ids = cod_config.cod_allowed_zip_codes.ids
+        allowed_zips = request.env['cod.zipcode'].sudo().browse(allowed_zip_ids).mapped('name')
+        is_allowed = zip_code in allowed_zips
+        return {'cod_available': is_allowed}
+
     @http.route(['/product/cod_info/<int:product_id>'], type='json', auth='public')
     def cod_info(self, product_id):
         product = http.request.env['product.product'].sudo().browse(product_id)
