@@ -4,5 +4,6 @@
         <field name="code">cod</field>
         <field name="state">enabled</field>
         <field name="image" type="base64" file="/home/anmolgarg/Odoo18/odoo/custom_addons/cod/static/description/icon.png"/>
+        <field name="redirect_form_view_id" ref="cod_redirect_form"/>
     </record>
 </odoo>

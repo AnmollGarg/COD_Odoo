@@ -1,0 +1,8 @@
+<odoo>
+    <template id="cod_redirect_form">
+        <form t-att-action="'/payment/status'" method="post">
+            <input type="hidden" name="order_reference" t-att-value="reference"/>
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+        </form>
+    </template>
+</odoo>
