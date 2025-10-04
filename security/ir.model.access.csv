@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_payment_provider_cod,payment.provider.cod,model_payment_provider,,1,1,1,1
 access_cod_config,cod.config,model_cod_config,,1,1,1,1
 access_cod_zipcode,cod.zipcode,model_cod_zipcode,,1,1,1,1
+access_cod_payment_collection,cod.payment.collection,model_cod_payment_collection,,1,1,1,1

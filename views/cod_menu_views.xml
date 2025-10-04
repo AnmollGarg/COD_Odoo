@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- COD Payment Collections Action -->
+    <record id="cod_payment_collections_action" model="ir.actions.act_window">
+        <field name="name">COD Payment Collections</field>
+        <field name="res_model">cod.payment.collection</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
+    </record>
+    <menuitem id="cod_payment_collections_menu" name="COD Payment Collections"
+              parent="sale.sale_menu_root" sequence="12" action="cod.cod_payment_collections_action"/>
+</odoo>
