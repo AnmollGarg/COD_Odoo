@@ -4,13 +4,11 @@
         <field name="model">cod.payment.collection</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name"/>
                 <field name="sale_order_id"/>
                 <field name="partner_id"/>
                 <field name="order_amount"/>
                 <field name="collection_amount"/>
                 <field name="state"/>
-                <field name="date"/>
             </list>
         </field>
     </record>
@@ -20,17 +18,16 @@
         <field name="model">cod.payment.collection</field>
         <field name="arch" type="xml">
             <form string="COD Payment Collections">
-                <sheet>
-                    <header>
-                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
-                        <button name="action_cancel" type="object" string="Cancel"/>
-                        <button name="action_done" type="object" string="Done"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done,cancel"/>
+            <header>
+                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state not in('draft')"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state not in('draft','confirmed')"/>
+                        <button name="action_done" type="object" string="Done" invisible="state != 'confirmed'"/>
+                        <field name="state" widget="statusbar"/>
                     </header>
+                <sheet>
                     <group>
                         <group>
                             <field name="sale_order_id"/>
-                            <field name="name" string="Transaction"/>
                             <field name="partner_id"/>
                         </group>
                         <group>
@@ -39,12 +36,6 @@
                             <field name="collection_amount"/>
                             <field name="company_id"/>
                         </group>
-                    </group>
-                    <group>
-                        <field name="date"/>
-                    </group>
-                    <group>
-                        <field name="notes"/>
                     </group>
                 </sheet>
             </form>
