@@ -20,8 +20,9 @@
             <form string="COD Payment Collections">
             <header>
                         <button name="action_confirm" type="object" string="Confirm" class="btn-primary" invisible="state not in('draft')"/>
-                        <button name="action_cancel" type="object" string="Cancel" invisible="state not in('draft','confirmed')"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="state not in('draft')"/>
                         <button name="action_done" type="object" string="Done" invisible="state != 'confirmed'"/>
+                        <button name="print_cod_report" type="object" string="Print COD Report" class="btn-secondary" />
                         <field name="state" widget="statusbar"/>
                     </header>
                 <sheet>

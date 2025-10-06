@@ -1,0 +1,54 @@
+<odoo>
+    <!-- Change from <report> tag to explicit <record> for better ID registration -->
+    <record id="action_report" model="ir.actions.report">
+        <field name="name">COD Payment Collection Report</field>
+        <field name="model">cod.payment.collection</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cod.cod_payment_collection_report_template</field>
+        <field name="print_report_name">'COD Payment Collection - %s' % (object.sale_order_id.name)</field>
+        <field name="binding_model_id" ref="model_cod_payment_collection"/>
+    </record>
+
+    <template id="cod_payment_collection_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div style="margin-bottom: 30px;">
+                    <h2 style="text-align:center; font-size:22px; margin-bottom:20px;">
+                        Cash on Delivery Payment Collection<br/>
+                        <span style="font-size:16px;" t-esc="doc.sale_order_id.name"/>
+                    </h2>
+                    <table class="table table-bordered" style="width:100%; border-collapse:collapse;">
+                        <tr style="background-color:#f2f2f2;">
+                            <th style="padding:8px; border:1px solid #ddd;">Customer</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.partner_id.name"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Payment Transaction</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.sale_order_id.name"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Order Amount</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.order_amount"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Collection Amount</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.collection_amount"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Delivery Company/Person</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.delivery_person_id.name"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Company</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.company_id.name"/>
+                        </tr>
+                        <tr>
+                            <th style="padding:8px; border:1px solid #ddd;">Notes</th>
+                            <td style="padding:8px; border:1px solid #ddd;" t-esc="doc.notes"/>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

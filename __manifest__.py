@@ -6,8 +6,9 @@
     'category': 'Accounting',
     'depends' : ['payment', 'sale', 'account', 'website', 'website_sale', 'payment', 'product', 'sale_management'],
     'data': [
+        'report/cod_payment_collection_report.xml',
         'views/cod_menu_views.xml',
-        'views/cod_payment_collections_views.xml',  # <-- Add this line
+        'views/cod_payment_collections_views.xml',
         'views/payment_cod_templates.xml',
         'data/cod_fee_product.xml',
         'data/payment_method_data.xml',
